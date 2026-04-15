@@ -203,10 +203,14 @@
     /* --- RESPONSIVE --- */
     @media (max-width: 900px) {
       .app-container { flex-direction: column; }
+	  .header  {
+	    order: 0
+	}	
       .sidebar { 
         width: 100%; 
         height: auto; 
         max-height: 250px; 
+		order: 1
       }
       .main-title { font-size: 2rem; }
       .sections { grid-template-columns: 1fr; }
@@ -271,8 +275,8 @@
 
     <footer>
       <p>© 2026 UNAM | <strong>Posgrado en Diseño Industrial</strong> | Laboratorio de Realidad Virtual y Realidad Aumentada
-      <br>Desarrollo realizado por <strong>Luis Alejandro Butrón Hernández</strong> como parte de su <strong>Servicio Social</strong>,
-      bajo la tutoría del <strong>Dr. Erick Iroel Heredia Carrillo</strong>.</br></p>
+      <p style="font-size: 0.7rem; opacity: 0.6;">Desarrollo realizado por <strong>Luis Alejandro Butrón Hernández</strong> como parte de su <strong>Servicio Social</strong>,
+      bajo la tutoría del <strong>Dr. Erick Iroel Heredia Carrillo</strong>.</p>
     </footer>
 
   </div>

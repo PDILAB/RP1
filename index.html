@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo AR Botánica</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --bg: #f4f8f4;
+      --panel: #ffffff;
+      --panel-2: #5fb05f;
+      --border: #5fb05f;
+      --text: #ffffff;
+      --accent: #3a7d44;
+      --soft: #6c8a6c;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden; /* Esto está perfecto para computadora */
+    }
+
+    .app-container {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: var(--panel);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      gap: 20px;
+      overflow-y: auto;
+    }
+
+    .tab {
+      position: relative;
+      display: block;
+      height: 100px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      text-decoration: none;
+    }
+
+    .tab img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+    }
+
+    .tab span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      width: 90%;
+    }
+
+    .main-wrapper {
+      flex-grow: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      justify-content: flex-start; 
+      align-items: center; 
+      padding: 15px;
+      color: var(--soft);
+      gap: 20px; 
+      flex-wrap: wrap; 
+      border-bottom: 1px solid var(--accent);
+      background: var(--text);
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .main-title {
+      font-size: 4rem;
+      text-align: center;
+      color: var(--soft);
+    }
+
+    .section {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 25px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .sections {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: #5fb05f;
+      padding: 30px;
+      text-align: center;
+      color: var(--text);
+    }
+
+    /* --- CÓDIGO ACTUALIZADO PARA CELULARES --- */
+    @media (max-width: 768px) {
+      /* Permitimos que en celular la página completa haga scroll hacia abajo */
+      html, body {
+        height: auto;
+        overflow: auto; 
+      }
+
+      .app-container {
+        flex-direction: column;
+        height: auto;
+      }
+      
+      /* Desagrupamos la caja principal para poder reordenar los elementos en la pantalla */
+      .main-wrapper {
+        display: contents; 
+      }
+
+      /* Aquí está la magia: ordenamos quién va primero de arriba hacia abajo */
+      header {
+        order: 1; 
+      }
+
+      .sidebar {
+        order: 2; /* Ponemos el menú debajo del header */
+        width: 100%;
+        height: auto; /* Dejamos que el alto se adapte automático a las tarjetas */
+        flex-direction: row; 
+        padding: 15px;
+        border-right: none;
+        border-bottom: 2px solid var(--accent); /* Lo separamos un poquito del contenido */
+        overflow-x: auto; 
+        white-space: nowrap;
+      }
+      
+      .tab {
+        /* Aumentamos el tamaño de las tarjetas en el celular para que se luzcan las imágenes */
+        flex: 0 0 240px; 
+        height: 120px;
+      }
+
+      .main-content {
+        order: 3; /* El contenido va después del menú */
+        padding: 20px; 
+      }
+
+      footer {
+        order: 4; /* El pie de página va al final */
+      }
+      
+      .main-title {
+        font-size: 2.5rem; 
+      }
+      
+      .sections {
+        grid-template-columns: 1fr; 
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="app-container">
+
+  <aside class="sidebar">
+    <a href="opuntia.html" class="tab">
+      <img src="opuntia.jpg">
+      <span><i>Opuntia lasciacantha</i></span>
+    </a>
+
+    <a href="dhalia.html" class="tab">
+      <img src="dhalia.jpg">
+      <span><i>Dhalia coccinea</i></span>
+    </a>
+
+    <a href="agave.html" class="tab">
+      <img src="agave.jpg">
+      <span><i>Agave salmiana</i></span>
+    </a>
+
+    <a href="allium.html" class="tab">
+      <img src="allium.jpeg">
+      <span><i>Allium glandulosum</i></span>
+    </a>
+
+    <a href="pittocaulon.html" class="tab">
+      <img src="pittocaulon.jpg">
+      <span><i>Pittocaulon praecox</i></span>
+    </a>
+  </aside>
+
+  <div class="main-wrapper">
+
+    <header>
+      <div>
+        <img src="logo.png" height="60">
+        <img src="logo1.png" height="60">
+      </div>
+
+      <div>
+          <strong>POSGRADO EN DISEÑO INDUSTRIAL</strong><br>
+        <strong>Demo académico web AR</strong><br>
+        Laboratorio de realidad virtual y realidad aumentada en colaboración con la Reserva Ecológica del Pedregal de San Ángel
+      </div>
+    </header>
+
+    <main class="main-content">
+      <h1 class="main-title">Explora las plantas</h1>
+
+      <div class="section">
+        Esta demo técnica surge de la capacidad de la inteligencia artificial en replicar plantas a través de modelos 3D con alta fidelidad.
+      </div>
+
+      <section class="sections">
+        <div class="section">
+          <h2>Demo explicativo para generación de proyectos iniciales vía web</h2>
+            <p>Este sitio presenta una prueba base para la visualización de modelos 3D en navegador y su despliegue en realidad aumentada desde dispositivos móviles compatibles. El objetivo es servir como referencia técnica inicial para futuros proyectos académicos y de experimentación en entornos web inmersivos.</p>
+        </div>
+
+        <div class="section">
+          <h2>Ficha del proyecto</h2>
+          <ul>
+          <li><strong>Alumno:</strong> Luis Alejandro Butrón Hernández</li>
+              <li><strong>Modalidad:</strong>Servicio social</li>
+              <li><strong>Tutoría académica:</strong> Dr. Erick Iroel Heredia Carrillo</li>
+              <li><strong>Espacio académico:</strong> Posgrado en Diseño Industrial · Laboratorio de Realidad Virtual y Realidad Aumentada</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+     <div class="footer-inner">
+      <strong>Posgrado en Diseño Industrial</strong><br>
+      Laboratorio de Realidad Virtual y Realidad Aumentada<br>
+      Desarrollo realizado por <strong>Luis Alejandro Butrón Hernández</strong> como parte de su <strong>Servicio Social</strong>,
+      bajo la tutoría del <strong>Dr. Erick Iroel Heredia Carrillo</strong>.
+     </div>
+    </footer>
+
+  </div>
+</div>
+
+</body>
+</html>

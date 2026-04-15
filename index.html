@@ -3,30 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Repositorio FabLab</title>
+  <title>Repositorio FabLab | Posgrado DI</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
 
   <style>
-    * { box-sizing: border-box; }
-
     :root {
-      --bg: #343c47;
-      --panel: #41464d;
-      --panel-2: #2a87a3;
-      --border: #2a87a3;
-      --text: #ffffff;
-      --accent: #4dc2d1;
-      --soft: #ffaf2e;
+      --bg-dark: #0f1115; /* Fondo profundo */
+      --panel-dark: #1a1d23; /* Paneles */
+      --accent-blue: #00e5ff; /* Cian tecnológico */
+      --accent-soft: #ffaf2e; /* Naranja de contraste */
+      --text-main: #e2e8f0;
+      --text-dim: #94a3b8;
+      --glass: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.1);
     }
+
+    * { box-sizing: border-box; transition: all 0.3s ease; }
 
     html, body {
       margin: 0;
       padding: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
       height: 100vh;
-      width: 100vw;
-      overflow: hidden; /* Esto está perfecto para computadora */
+      overflow: hidden;
     }
 
     .app-container {
@@ -35,43 +37,73 @@
       height: 100vh;
     }
 
+    /* --- SIDEBAR REIMAGINADA --- */
     .sidebar {
-      width: 280px;
-      background: var(--panel);
+      width: 320px;
+      background: var(--panel-dark);
       border-right: 1px solid var(--border);
       display: flex;
       flex-direction: column;
-      padding: 20px;
-      gap: 10px;
+      padding: 0;
+    }
+
+    .sidebar-header {
+      padding: 25px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-header h3 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-blue);
+      margin: 0 0 15px 0;
+    }
+
+    /* Buscador simulado para manejar 100+ proyectos */
+    .search-box {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      padding: 10px;
+      border-radius: 8px;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .project-list {
+      flex-grow: 1;
       overflow-y: auto;
+      padding: 10px;
     }
 
+    /* Estilo de los links de proyectos */
     .tab {
-      position: relative;
-      display: block;
-      height: 25px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 12px 15px;
+      margin-bottom: 5px;
+      border-radius: 8px;
       text-decoration: none;
-	  text-align: center;
-	  background-color: var(--soft);
-	  color: var (--soft);
-    }
-	
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      border: 1px solid transparent;
     }
 
-    .tab span {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      font-weight: bold;
-      text-align: center-left;
-      width: 90%;
+    .tab:hover {
+      background: var(--glass);
+      color: var(--accent-blue);
+      border-color: var(--accent-blue);
+      padding-left: 20px;
     }
 
+    .tab::before {
+      content: "•";
+      margin-right: 10px;
+      color: var(--accent-blue);
+    }
+
+    /* --- CONTENIDO PRINCIPAL --- */
     .main-wrapper {
       flex-grow: 1;
       overflow-y: auto;
@@ -81,115 +113,104 @@
 
     header {
       display: flex;
-      justify-content: flex-start; 
-      align-items: center; 
-      padding: 15px;
-      color: var(--accent);
-      gap: 20px; 
-      flex-wrap: wrap; 
-      border-bottom: 1px solid var(--accent);
-      background: var(--panel-2);
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: rgba(15, 17, 21, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header-info {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-align: right;
+      line-height: 1.4;
     }
 
     .main-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px;
-      max-width: 1200px;
+      padding: 60px 40px;
+      max-width: 1100px;
       margin: 0 auto;
       width: 100%;
     }
 
     .main-title {
-      font-size: 4rem;
-      text-align: left;
-      color: var(--soft);
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 30px;
+      background: linear-gradient(to right, #fff, var(--accent-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .section {
-      background: var(--panel-2);
+      background: var(--glass);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 25px;
-      width: 100%;
-      margin-bottom: 20px;
+      border-radius: 20px;
+      padding: 35px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .section h2 {
+      color: var(--accent-blue);
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 0;
     }
 
     .sections {
-      width: 100%;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 25px;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 30px;
+    }
+
+    /* Ficha técnica con estilo de código */
+    .project-info-list {
+      list-style: none;
+      padding: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+    }
+
+    .project-info-list li {
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 5px;
+    }
+
+    .project-info-list strong {
+      color: var(--accent-soft);
+      display: block;
+      text-transform: uppercase;
+      font-size: 0.7rem;
     }
 
     footer {
+      padding: 10px;
       border-top: 1px solid var(--border);
-      background: var(--panel-2);
-      padding: 30px;
       text-align: center;
-      color: var(--accent);
+      font-size: 0.8rem;
+      color: var(--text-dim);
     }
 
-    /* --- CÓDIGO ACTUALIZADO PARA CELULARES --- */
-    @media (max-width: 768px) {
-      /* Permitimos que en celular la página completa haga scroll hacia abajo */
-      html, body {
-        height: auto;
-        overflow: auto; 
+    /* --- RESPONSIVE --- */
+    @media (max-width: 900px) {
+      .app-container { flex-direction: column; }
+      .sidebar { 
+        width: 100%; 
+        height: auto; 
+        max-height: 250px; 
       }
-
-      .app-container {
-        flex-direction: column;
-        height: auto;
-      }
-      
-      /* Desagrupamos la caja principal para poder reordenar los elementos en la pantalla */
-      .main-wrapper {
-        display: contents; 
-      }
-
-      /* Aquí está la magia: ordenamos quién va primero de arriba hacia abajo */
-      header {
-        order: 1; 
-      }
-
-      .sidebar {
-        order: 2; /* Ponemos el menú debajo del header */
-        width: 100%;
-        height: auto; /* Dejamos que el alto se adapte automático a las tarjetas */
-        flex-direction: row; 
-        padding: 15px;
-        border-right: none;
-        border-bottom: 2px solid var(--accent); /* Lo separamos un poquito del contenido */
-        overflow-x: auto; 
-        white-space: nowrap;
-      }
-      
-      .tab {
-        /* Aumentamos el tamaño de las tarjetas en el celular para que se luzcan las imágenes */
-        flex: 0 0 120px; 
-        height: 25px;
-      }
-
-      .main-content {
-        order: 3; /* El contenido va después del menú */
-        padding: 20px; 
-      }
-
-      footer {
-        order: 4; /* El pie de página va al final */
-      }
-      
-      .main-title {
-        font-size: 2.5rem; 
-		text-align: center;
-      }
-      
-      .sections {
-        grid-template-columns: 1fr; 
-      }
+      .main-title { font-size: 2rem; }
+      .sections { grid-template-columns: 1fr; }
+      html, body { overflow: auto; height: auto; }
     }
   </style>
 </head>
@@ -198,73 +219,60 @@
 <div class="app-container">
 
   <aside class="sidebar">
-    <a href="proyecto1.html" class="tab">
-      <span>Proyecto 1</span>
-    </a>
-
-    <a href="proyecto2.html" class="tab">
-      <span>Proyecto 2</span>
-    </a>
-
-    <a href="proyecto3.html" class="tab">
-      <span>Proyecto 3</span>
-    </a>
-
-    <a href="proyecto4.html" class="tab">
-      <span>Proyecto 4</span>
-    </a>
-
-    <a href="proyecto5.html" class="tab">
-      <span>Proyecto 5</span>
-    </a>
+    <div class="sidebar-header">
+      <h3>Explorador de Proyectos</h3>
+      <div class="search-box">🔍 Buscar proyecto...</div>
+    </div>
+    
+    <nav class="project-list">
+      <a href="proyecto1.html" class="tab">Proyecto 01: Bio-Materiales</a>
+      <a href="proyecto2.html" class="tab">Proyecto 02: Impresión 3D Arcilla</a>
+      <a href="proyecto3.html" class="tab">Proyecto 03: Estructuras Cinéticas</a>
+      <a href="proyecto4.html" class="tab">Proyecto 04: Realidad Aumentada</a>
+      <a href="proyecto5.html" class="tab">Proyecto 05: Mobiliario Paramétrico</a>
+      </nav>
   </aside>
 
   <div class="main-wrapper">
 
     <header>
-      <div>
-        <img src="logo.png" height="60">
-      </div>
-
-      <div>
-          <strong>POSGRADO EN DISEÑO INDUSTRIAL</strong><br>
-        <strong>Repositorio</strong><br>
-        Laboratorio de realidad virtual y realidad aumentada
+      <img src="logo.png" height="50" alt="Logo">
+      <div class="header-info">
+        <strong>POSGRADO EN DISEÑO INDUSTRIAL</strong><br>
+        Repositorio Digital del FabLab<br>
+        Laboratorio de RV / RA
       </div>
     </header>
 
     <main class="main-content">
-      <h1 class="main-title">Repositorio de proyectos del FabLab de la Unidad de Posgrado en Diseño Industrial</h1>
+      <h1 class="main-title">Repositorio de proyectos del FabLab</h1>
 
-      <div class="section">
-        En este sitio web podrás encontrar los proyectos que el Laboratorio de fabricación digital de la Unidad de Posgrado en Diseño Industrial ha realizado.
+      <div class="section" style="font-size: 1.1rem; border-left: 4px solid var(--accent-blue);">
+        Una plataforma dedicada a la documentación y difusión de procesos de fabricación digital de la Unidad de Posgrado en Diseño Industrial.
       </div>
 
       <section class="sections">
         <div class="section">
           <h2>¿Qué es un Fab Lab?</h2>
-            <p>es un espacio de trabajo colaborativo equipado con tecnología avanzada de fabricación digital como impresoras 3D, cortadoras láser y fresadoras CNC. Nacidos del MIT, estos laboratorios permiten a estudiantes, emprendedores y creativos materializar ideas, prototipar y crear casi cualquier cosa, fomentando la innovación local y la educación tecnológica</p>
+          <p>Es un espacio de trabajo colaborativo equipado con tecnología avanzada de fabricación digital. Nacidos del MIT, estos laboratorios permiten a estudiantes y creativos materializar ideas mediante procesos de prototipado rápido, fomentando la innovación local y la educación tecnológica de alto nivel.</p>
         </div>
 
         <div class="section">
-          <h2>Ficha del proyecto</h2>
-          <ul>
-          <li><strong>Alumno:</strong> Luis Alejandro Butrón Hernández</li>
-              <li><strong>Modalidad:</strong> Servicio social</li>
-              <li><strong>Tutoría académica:</strong> Dr. Erick Iroel Heredia Carrillo</li>
-              <li><strong>Espacio académico:</strong> Posgrado en Diseño Industrial · Laboratorio de Realidad Virtual y Realidad Aumentada</li>
+          <h2>Ficha del Proyecto</h2>
+          <ul class="project-info-list">
+            <li><strong>Alumno</strong> Luis Alejandro Butrón Hernández</li>
+            <li><strong>Modalidad</strong> Servicio social</li>
+            <li><strong>Tutoría académica</strong> Dr. Erick Iroel Heredia Carrillo</li>
+            <li><strong>Espacio académico</strong> Posgrado en Diseño Industrial</li>
           </ul>
         </div>
       </section>
     </main>
 
     <footer>
-     <div class="footer-inner">
-      <strong>Posgrado en Diseño Industrial</strong><br>
-      Laboratorio de Realidad Virtual y Realidad Aumentada<br>
-      Desarrollo realizado por <strong>Luis Alejandro Butrón Hernández</strong> como parte de su <strong>Servicio Social</strong>,
-      bajo la tutoría del <strong>Dr. Erick Iroel Heredia Carrillo</strong>.
-     </div>
+      <p>© 2026 UNAM | <strong>Posgrado en Diseño Industrial</strong> | Laboratorio de Realidad Virtual y Realidad Aumentada
+      <br>Desarrollo realizado por <strong>Luis Alejandro Butrón Hernández</strong> como parte de su <strong>Servicio Social</strong>,
+      bajo la tutoría del <strong>Dr. Erick Iroel Heredia Carrillo</strong>.</br></p>
     </footer>
 
   </div>

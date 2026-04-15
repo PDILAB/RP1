@@ -201,28 +201,77 @@
     }
 
     /* --- RESPONSIVE --- */
-    @media (max-width: 900px) {
-      .app-container { flex-direction: column; }
-	  .header  {
-	    order: 1;
-	     padding: 10px 20px;
-	}	
-      .sidebar { 
-        width: 100%; 
-        height: auto; 
-        max-height: 250px; 
-		order: 2;
-      }
-      .main-title { font-size: 2rem; 
-	  order: 3; 
-	  }
-      .sections { grid-template-columns: 1fr; }
-      html, body { overflow: auto; height: auto; }
-    }
-	 .main-content {
-        order: 4; /* El contenido va después del menú */
-        padding: 20px; 
-		}
+   @media (max-width: 900px) {
+  html, body {
+    height: auto;
+    overflow: auto; /* Permite scroll natural */
+  }
+
+  .app-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  /* Usamos display: flex en el contenedor principal para reordenar todo */
+  .app-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    order: 1; /* Primero el Header */
+    position: relative; /* Se mueve con el contenido */
+    padding: 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-info {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .main-wrapper {
+    order: 2; /* Segundo el contenido principal */
+    display: contents; /* Permite que sus hijos se ordenen con el padre */
+  }
+
+  .main-content {
+    padding: 30px 20px;
+  }
+
+  footer {
+    order: 3; /* Tercero el Footer */
+    position: relative;
+  }
+
+  .sidebar {
+    order: 4; /* Al final de todo la búsqueda de proyectos */
+    width: 100%;
+    height: auto;
+    max-height: none;
+    border-right: none;
+    border-top: 1px solid var(--border);
+    padding-bottom: 40px;
+  }
+
+  .sidebar-header {
+    background: var(--panel-dark);
+  }
+
+  .project-list {
+    max-height: 400px; /* Limitamos un poco el alto de la lista para no ser eterna */
+    overflow-y: auto;
+  }
+
+  .main-title {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+
+  .sections {
+    grid-template-columns: 1fr;
+  }
   </style>
 </head>
 <body>

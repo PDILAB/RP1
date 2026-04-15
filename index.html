@@ -204,18 +204,23 @@
     @media (max-width: 900px) {
       .app-container { flex-direction: column; }
 	  .header  {
-	    order: 0
+	    order: 1;
+	     padding: 10px 20px;
 	}	
       .sidebar { 
         width: 100%; 
         height: auto; 
         max-height: 250px; 
-		order: 1
+		order: 2;
       }
       .main-title { font-size: 2rem; }
       .sections { grid-template-columns: 1fr; }
       html, body { overflow: auto; height: auto; }
     }
+	 .main-content {
+        order: 3; /* El contenido va después del menú */
+        padding: 20px; 
+		}
   </style>
 </head>
 <body>

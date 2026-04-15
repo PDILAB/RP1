@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyecto | Repositorio FabLab</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #0f1115;
+      --panel-dark: #1a1d23;
+      --accent-blue: #00e5ff;
+      --accent-soft: #ffaf2e;
+      --text-main: #e2e8f0;
+      --text-dim: #94a3b8;
+      --glass: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.1);
+    }
+
+    * { box-sizing: border-box; transition: all 0.3s ease; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* --- HEADER (IGUAL AL PRINCIPAL) --- */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: rgba(15, 17, 21, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-info {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-align: right;
+    }
+
+    /* --- NAVEGACIÓN Y BOTÓN VOLVER --- */
+    .nav-container {
+      max-width: 1100px;
+      margin: 30px auto 0;
+      padding: 0 40px;
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--accent-blue);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      border: 1px solid var(--accent-blue);
+      padding: 8px 16px;
+      border-radius: 5px;
+      background: transparent;
+    }
+
+    .btn-back:hover {
+      background: var(--accent-blue);
+      color: var(--bg-dark);
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+    }
+
+    /* --- CONTENIDO DEL PROYECTO --- */
+    .project-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px;
+    }
+
+    .project-header {
+      margin-bottom: 40px;
+    }
+
+    .project-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin: 0 0 10px 0;
+      background: linear-gradient(to right, #fff, var(--accent-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Layout de 2 columnas para Foto y Metadatos */
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .project-image-container {
+      background: var(--panel-dark);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-meta {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 30px;
+      height: fit-content;
+    }
+
+    .meta-item {
+      margin-bottom: 25px;
+    }
+
+    .meta-label {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent-soft);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .meta-value {
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+
+    /* Descripción extendida */
+    .project-description {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+      max-width: 800px;
+      border-top: 1px solid var(--border);
+      padding-top: 30px;
+    }
+
+    .project-description h3 {
+      color: var(--text-main);
+      margin-top: 0;
+    }
+
+    /* --- FOOTER (IGUAL AL PRINCIPAL) --- */
+    footer {
+      margin-top: 60px;
+      padding: 40px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      background: var(--panel-dark);
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 850px) {
+      .project-grid { grid-template-columns: 1fr; }
+      .project-title { font-size: 2.2rem; }
+      .project-container { padding: 20px; }
+      header { padding: 15px 20px; flex-direction: column; gap: 15px; text-align: center; }
+      .header-info { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="logo.png" height="50" alt="Logo">
+    <div class="header-info">
+      <strong>POSGRADO EN DISEÑO INDUSTRIAL</strong><br>
+      Repositorio Digital de Fabricación<br>
+      Laboratorio de RV / RA
+    </div>
+  </header>
+
+  <nav class="nav-container">
+    <a href="index.html" class="btn-back">← VOLVER AL REPOSITORIO</a>
+  </nav>
+
+  <main class="project-container">
+    
+    <div class="project-header">
+      <h1 class="project-title">Nombre del Proyecto</h1>
+    </div>
+
+    <div class="project-grid">
+      <div class="project-image-container">
+        <img src="foto-proyecto.jpg" alt="Visualización del proyecto">
+      </div>
+
+      <aside class="project-meta">
+        <div class="meta-item">
+          <span class="meta-label">Personas Involucradas</span>
+          <div class="meta-value">
+            Nombre del Alumno<br>
+            Colaborador 1<br>
+            Colaborador 2
+          </div>
+        </div>
+
+        <div class="meta-item">
+          <span class="meta-label">Categoría Técnica</span>
+          <div class="meta-value">Impresión 3D / CNC / Modelado</div>
+        </div>
+
+        <div class="meta-item">
+          <span class="meta-label">Fecha de Finalización</span>
+          <div class="meta-value">Semestre 2024-1</div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="project-description">
+      <h3>Descripción del Proyecto</h3>
+      <p>
+        Aquí va la descripción detallada del proyecto. Puedes hablar sobre los materiales utilizados, 
+        el proceso de fabricación en el FabLab, los retos técnicos encontrados y el resultado final. 
+        Este espacio está diseñado para ser legible y enfocado en el contenido académico.
+      </p>
+      <p>
+        Incluso puedes añadir más párrafos para explicar la metodología de diseño industrial 
+        aplicada o el impacto del uso de Realidad Virtual/Aumentada en este caso específico.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 UNAM | Posgrado en Diseño Industrial | Laboratorio de Realidad Virtual y Realidad Aumentada</p>
+    <p style="font-size: 0.7rem; opacity: 0.6;">Desarrollo realizado por <strong>Luis Alejandro Butrón Hernández</strong> como parte de su <strong>Servicio Social</strong>,
+      bajo la tutoría del <strong>Dr. Erick Iroel Heredia Carrillo</strong>.</p>
+  </footer>
+
+</body>
+</html>
